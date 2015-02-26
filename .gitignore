@@ -1,0 +1,9 @@
+/build/logs
+/build/phpdox
+/build/phploc
+/build/report
+/cache
+/phpunit.xml
+/vendor/*
+/.idea
+/*.iml
