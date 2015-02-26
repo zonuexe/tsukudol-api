@@ -21,7 +21,7 @@ final class NiziconMapper
             'birthDay' => $member->birth_day->format(\DateTime::W3C),
             'blogUrl'  => $member->blog_url,
             'headShotUrls' =>$member->head_shot_urls,
-            'twitter'  => $member->twitter->getUrl(),
+            'twitter'  => $member->twitter->getUrlAsShort(),
             'pixiv'    => ($member->pixiv) ? $member->pixiv->getUrlAsShort() : null,
         ];
     }
