@@ -50,7 +50,16 @@ final class TemplateResponse implements ResponseInterface
     {
         if (!self::$twig) { self::$twig = self::initTwig(); }
 
-        return self::$twig->render($this->tpl_name.'.tpl.html', $this->params);
+        $params = $this->params + [
+            'headers' => $app->headers,
+            'server'  => $app->server,
+            'cookie'  => $app->cookie,
+            'get'     => $app->get,
+            'post'    => $app->post,
+            'now'     => $app->now,
+        ];
+
+        return self::$twig->render($this->tpl_name.'.tpl.html', $params);
     }
 
     /**
