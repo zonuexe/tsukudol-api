@@ -16,8 +16,6 @@ namespace TsukudolAPI;
  */
 final class Application
 {
-    /** @var array apache_request_headers() */
-    private $headers;
     /** @var array $_SERVER */
     private $server;
     /** @var array $_COOKIE */
@@ -39,9 +37,8 @@ final class Application
     /**
      * @param array $_SERVER
      */
-    public function __construct(array $headers, array $server, array $cookie, array $get, array $post, \DateTimeImmutable $now)
+    public function __construct(array $server, array $cookie, array $get, array $post, \DateTimeImmutable $now)
     {
-        $this->headers = $headers;
         $this->server  = $server;
         $this->cookie  = $cookie;
         $this->get     = $get;

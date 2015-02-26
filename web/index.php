@@ -5,9 +5,8 @@ require __DIR__ . '/../vendor/autoload.php';
 error_reporting(-1);
 
 call_user_func(function(){
-    $headers = getallheaders();
     $now = new \DateTimeImmutable;
-    $app = new Application($headers, $_SERVER, $_COOKIE, $_GET, $_POST, $now);
+    $app = new Application($_SERVER, $_COOKIE, $_GET, $_POST, $now);
     $router = new \Teto\Routing\Router($app->getRoutingMap());
 
     $path = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';
