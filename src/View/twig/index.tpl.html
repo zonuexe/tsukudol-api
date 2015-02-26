@@ -3,11 +3,9 @@
 {% block content %}
 <h1>つくどるAPI</h1>
 
-<hr>
-<footer>
-    <address>
-        &copy; Copyright 2015 USAMI Kenta<br>
-        Tsukudol API is licenced under <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License, Version 3</a>
-    </address>
-</footer>
+<pre><code>
+curl <a href="http://{{ server.HTTP_HOST }}/2zicon">{{ server.HTTP_HOST }}/2zicon</a>
+curl <a href="http://{{ server.HTTP_HOST }}/2zicon/next_birthday">{{ server.HTTP_HOST }}/2zicon/next_birthday</a>
+</code></pre>
+
 {% endblock %}
