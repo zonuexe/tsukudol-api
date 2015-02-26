@@ -51,7 +51,6 @@ final class TemplateResponse implements ResponseInterface
         if (!self::$twig) { self::$twig = self::initTwig(); }
 
         $params = $this->params + [
-            'headers' => $app->headers,
             'server'  => $app->server,
             'cookie'  => $app->cookie,
             'get'     => $app->get,
