@@ -1,9 +1,11 @@
 <?php
 namespace TsukudolAPI\Controller;
 use Teto\Routing\Action;
+use Baguette\Response\RedirectResponse;
 use Baguette\Response\SerializedResponse;
 use Baguette\Serializer;
 use Tsukudol\Nizicon;
+use TsukudolAPI\View\NiziconMapper;
 
 final class TeamController implements ControllerInterface
 {
@@ -79,7 +81,7 @@ final class TeamController implements ControllerInterface
         return new SerializedResponse(
             [
                 'until'  => $until,
-                'member' => \TsukudolAPI\View\NiziconMapper::dump($nearest[1]),
+                'member' => NiziconMapper::dump($nearest[1]),
             ],
             new Serializer\PhpJsonSerializer
         );
@@ -87,6 +89,24 @@ final class TeamController implements ControllerInterface
 
     public function team_member(Action $action)
     {
-        var_dump($action);exit;
+        $team = $action->param['team'];
+        $name = $action->param['member'];
+        try {
+            $member  = Nizicon\Member::find($name);
+            $twitter = '@' . $member->twitter->screen_name;
+            $data    = NiziconMapper::dump($member);
+        } catch (\OutOfBoundsException $e) {
+            $member  = null;
+            $twitter = null;
+            $data    = [];
+        }
+
+        if ($member && $twitter !== $name) {
+            return new RedirectResponse("/$team/$twitter", [], 301);
+        }
+
+        $serializer = (new Serializer\PhpJsonSerializer)->setEmptyAsObject();
+
+        return new SerializedResponse($data, $serializer, 404);
     }
 }
