@@ -1,9 +1,8 @@
 <?php
 namespace TsukudolAPI\Controller;
 use Teto\Routing\Action;
-use TsukudolAPI\Response\TemplateResponse;
-use TsukudolAPI\Response\SerializedResponse;
-use TsukudolAPI\Response\Serializer;
+use Baguette\Response\SerializedResponse;
+use Baguette\Serializer;
 use Tsukudol\Nizicon;
 
 final class TeamController implements ControllerInterface
@@ -84,5 +83,10 @@ final class TeamController implements ControllerInterface
             ],
             new Serializer\PhpJsonSerializer
         );
+    }
+
+    public function team_member(Action $action)
+    {
+        var_dump($action);exit;
     }
 }

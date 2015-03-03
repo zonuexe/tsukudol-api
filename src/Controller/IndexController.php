@@ -1,8 +1,8 @@
 <?php
 namespace TsukudolAPI\Controller;
 use Teto\Routing\Action;
+use Baguette\Response\RawResponse;
 use TsukudolAPI\Response\TemplateResponse;
-use TsukudolAPI\Response\RawResponse;
 
 final class IndexController implements ControllerInterface
 {
@@ -37,9 +37,7 @@ final class IndexController implements ControllerInterface
      */
     public function display404(Action $action)
     {
-        $this->app->setHttpStatus(404);
-
-        return new TemplateResponse('404');
+        return new TemplateResponse('404', [], 404);
     }
 
     /**
@@ -47,8 +45,6 @@ final class IndexController implements ControllerInterface
      */
     public function display500(Action $action)
     {
-        $this->app->setHttpStatus(500);
-
-        return new TemplateResponse('500');
+        return new TemplateResponse('500', [], 500);
     }
 }

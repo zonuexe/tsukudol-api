@@ -14,38 +14,14 @@ namespace TsukudolAPI;
  * @property-read array $get    $_GET
  * @property-read array $post   $_POST
  */
-final class Application
+final class Application extends \Baguette\Application
 {
-    /** @var array $_SERVER */
-    private $server;
-    /** @var array $_COOKIE */
-    private $cookie;
-    /** @var array $_GET */
-    private $get;
-    /** @var array $_POST */
-    private $post;
-    /** @var int */
-    private $status_code = 200; // '200 OK'
-    /** @var \DateTimeImmutable */
-    private $now;
-
-    /** @var string */
-    private $view_mode;
-
     public function __get($name) { return $this->$name; }
 
     /**
-     * @param array $_SERVER
+     * @param  \Teto\Routing\Action $action
+     * @return \Baguette\Response\ResponseInterface
      */
-    public function __construct(array $server, array $cookie, array $get, array $post, \DateTimeImmutable $now)
-    {
-        $this->server  = $server;
-        $this->cookie  = $cookie;
-        $this->get     = $get;
-        $this->post    = $post;
-        $this->now     = $now;
-    }
-
     public function execute(\Teto\Routing\Action $action)
     {
         list($controller_name, $method) = $action->value;
@@ -62,52 +38,23 @@ final class Application
     }
 
     /**
-     * @param int  $status
-     */
-    public function setHttpStatus($status)
-    {
-        $this->status_code = $status;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function sendHttpStatus()
-    {
-        if (!headers_sent() && $this->status_code) {
-            http_response_code($this->status_code);
-            return true;
-        }
-
-        return false;
-    }
-
-    public function renderResponse(\TsukudolAPI\Response\ResponseInterface $response)
-    {
-        if (!headers_sent()) {
-            header("Content-type: " . $response->getContentType($this));
-        }
-
-        return $response->render($this);
-    }
-
-    /**
      * @return array
      */
     public static function getRoutingMap()
     {
         $re_team   = '/^2zicon$/';
         $re_member = '/^@?\W{1,31}$/';
+        $re_member = '/^a$/';
 
         $routing_map = [
             ['GET',  '/',                    ['IndexController', 'index']],
             ['GET',  '/license',             ['IndexController', 'license']],
             ['GET',  '/:team',               ['TeamController',  'team'],
-                      ['team' => $re_team] ],
+                      ['team' => $re_team], '?ext' => ['', 'json'] ],
             ['GET',  '/:team/next_birthday', ['TeamController',  'next_birthday'],
                       ['team' => $re_team, '?ext' => ['', 'json'] ] ],
             ['GET',  '/:team/:member',       ['TeamController',  'team_member'],
-                      ['team' => $re_team], 'member' => $re_member ],
+                      ['team' => $re_team], 'member' => $re_member, '?ext' => ['', 'json'] ],
              '#404'     =>                   ['IndexController', 'display404'],
         ];
 
