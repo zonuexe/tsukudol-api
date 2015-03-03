@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d1732aed28e017894651168f5a6d6d1a",
+    "hash": "d7a4ce4706e95e6a508bb3ba4c817eeb",
     "packages": [
         {
             "name": "twig/twig",
@@ -62,6 +62,57 @@
                 "templating"
             ],
             "time": "2015-01-25 17:32:08"
+        },
+        {
+            "name": "zonuexe/baguette",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BaguettePHP/baguette.git",
+                "reference": "b964739545e8f774be07336a2c0d28c7529cfd2a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BaguettePHP/baguette/zipball/b964739545e8f774be07336a2c0d28c7529cfd2a",
+                "reference": "b964739545e8f774be07336a2c0d28c7529cfd2a",
+                "shasum": ""
+            },
+            "require": {
+                "zonuexe/simple-routing": "~0.1.2"
+            },
+            "require-dev": {
+                "phploc/phploc": "~2.0.6",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "~4.3.5",
+                "satooshi/php-coveralls": "dev-master",
+                "theseer/phpdox": "~0.7.0",
+                "twig/twig": "~1.18.0"
+            },
+            "suggest": {
+                "twig/twig": "template engine"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Baguette\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "USAMI Kenta",
+                    "email": "tadsan@zonu.me"
+                }
+            ],
+            "description": "Simple and High modularity web framework for PHP.",
+            "keywords": [
+                "microframework",
+                "webapp"
+            ],
+            "time": "2015-03-03 16:54:32"
         },
         {
             "name": "zonuexe/http-accept-language",
@@ -1188,7 +1239,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "zonuexe/baguette": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
