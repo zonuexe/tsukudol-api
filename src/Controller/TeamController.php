@@ -95,10 +95,12 @@ final class TeamController implements ControllerInterface
             $member  = Nizicon\Member::find($name);
             $twitter = '@' . $member->twitter->screen_name;
             $data    = NiziconMapper::dump($member);
+            $status  = 200;
         } catch (\OutOfBoundsException $e) {
             $member  = null;
             $twitter = null;
             $data    = [];
+            $status  = 404;
         }
 
         if ($member && $twitter !== $name) {
@@ -107,6 +109,6 @@ final class TeamController implements ControllerInterface
 
         $serializer = (new Serializer\PhpJsonSerializer)->setEmptyAsObject();
 
-        return new SerializedResponse($data, $serializer, 404);
+        return new SerializedResponse($data, $serializer, $status);
     }
 }
