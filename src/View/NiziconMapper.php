@@ -6,7 +6,10 @@ final class NiziconMapper
 {
     private static $LOCALES = ['ja-Jpan', 'ja-Hira', 'en-Latn'];
 
-    /** @return array */
+    /**
+     * @param  \Tsukudol\Nizicon\Member $member
+     * @return array
+     * */
     public static function dump(Nizicon\Member $member)
     {
         return [
@@ -17,6 +20,7 @@ final class NiziconMapper
             ],
             'nickName' => [
                 'ja-Jpan' => $member->nick_names->getNameIn('ja-Jpan'),
+                'en-Latn' => $member->nick_names->getNameIn('en-Latn'),
             ],
             'birthDay' => $member->birth_day->format(\DateTime::W3C),
             'blogUrl'  => $member->blog_url,
