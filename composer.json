@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "zonuexe/tsukudol-nizicon": "0.0.6"
+        "zonuexe/tsukudol-nizicon": "~0.1.0"
        ,"zonuexe/simple-routing": "~0.1.2"
        ,"zonuexe/http-accept-language": "0.4.1",
         "twig/twig": "1.18.0",

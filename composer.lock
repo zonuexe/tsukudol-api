@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d7a4ce4706e95e6a508bb3ba4c817eeb",
+    "hash": "3b118cc56814f55921acfefd4db894be",
     "packages": [
         {
             "name": "twig/twig",
@@ -242,16 +242,16 @@
         },
         {
             "name": "zonuexe/tsukudol-nizicon",
-            "version": "0.0.6",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zonuexe/php-tsukudol-nizicon.git",
-                "reference": "df0f1811c6389b9006a314de9fda5ab2f9566ca9"
+                "reference": "4b346e5c4f965ad2c808f03bcd5a373c18ae2d1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zonuexe/php-tsukudol-nizicon/zipball/df0f1811c6389b9006a314de9fda5ab2f9566ca9",
-                "reference": "df0f1811c6389b9006a314de9fda5ab2f9566ca9",
+                "url": "https://api.github.com/repos/zonuexe/php-tsukudol-nizicon/zipball/4b346e5c4f965ad2c808f03bcd5a373c18ae2d1b",
+                "reference": "4b346e5c4f965ad2c808f03bcd5a373c18ae2d1b",
                 "shasum": ""
             },
             "require": {
@@ -281,7 +281,7 @@
                 }
             ],
             "description": "Niji No Conquistador on PHP",
-            "time": "2015-02-17 17:27:25"
+            "time": "2015-03-04 04:10:36"
         }
     ],
     "packages-dev": [
